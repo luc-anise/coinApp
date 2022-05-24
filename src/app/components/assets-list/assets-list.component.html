@@ -1,27 +1,49 @@
-<article class="bg-white rounded-md shadow-md">
+<article class="bg-white rounded-md shadow-md mx-2">
   <header class="p-4 border-b flex items-center justify-between">
     <h2 class="text-lg font-semibold text-gray-700">Assets List</h2>
     <div class="relative z-0 group">
       <input
         type="text"
-        name="floating_email"
-        class="block px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        name="search"
+        class="block px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
         placeholder=" "
-        required
+        [formControl]="searchInput"
       />
       <label
-        for="floating_email"
-        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-        >Search</label
+        for="search"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Search (ID)</label
       >
+      <button
+        class="absolute top-3 right-0"
+        (click)="filterAssets(searchInput.value)"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          viewBox="0 0 20 20"
+          fill="currentColor"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
     </div>
   </header>
   <div *ngIf="assets.length === 0">
     <p class="p-4 text-center text-gray-600">Loading...</p>
   </div>
-  <ul>
-    <li *ngFor="let asset of assets">
-      <span>{{ asset.name }} - ${{ asset.price_usd || "N/A" }}</span>
+  <div *ngIf="assets.length !== 0 && filteredAssets.length === 0">
+    <p class="p-4 text-center text-gray-600">
+      No assets found with id of "{{ searchInput.value }}"
+    </p>
+  </div>
+  <ul class="px-4">
+    <li *ngFor="let asset of filteredAssets" (click)="clickedAsset(asset)">
+      <span>{{ asset.name }} ({{asset.asset_id}}) - ${{ asset.price_usd || "N/A" }}</span>
     </li>
   </ul>
 </article>

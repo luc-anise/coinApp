@@ -1,0 +1,6 @@
+<article class="bg-white rounded-md shadow-md mx-2">
+  <header class="p-4 border-b">
+    <h2 class="text-lg font-semibold text-gray-700">Assets Details</h2>
+  </header>
+  <p *ngIf="assetsService.detailedAsset"> {{assetsService.detailedAsset | json}} </p>
+</article>
