@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "coinapp-viz": {
+      "hosting": {
+        "coinApp": [
+          "coinapp-viz"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "coinapp-viz"
+  }
+}

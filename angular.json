@@ -106,6 +106,16 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "coinApp:build:production",
+            "firebaseProject": "coinapp-viz",
+            "firebaseHostingSite": "coinapp-viz"
+          }
         }
       }
     }
