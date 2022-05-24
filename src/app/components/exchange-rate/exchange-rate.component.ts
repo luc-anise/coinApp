@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { AssetsService } from 'src/app/services/assets.service';
 
 @Component({
@@ -8,9 +9,19 @@ import { AssetsService } from 'src/app/services/assets.service';
 })
 export class ExchangeRateComponent implements OnInit {
 
-  constructor(public assetsService: AssetsService) { }
+  exchangeForm = this.fb.group({
+    base: [''],
+    quote: [''],
+  });
+
+  constructor(public assetsService: AssetsService, private fb: FormBuilder) { }
 
   ngOnInit(): void {
+  }
+
+  async getQuote() {
+   let quote = await this.assetsService.getExchangeRates(this.exchangeForm.value.base, this.exchangeForm.value.quote);
+    console.log(quote);
   }
 
 }

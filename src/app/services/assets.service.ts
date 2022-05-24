@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Asset } from 'models/Asset';
+import { ExchangeQuote } from 'models/ExchangeQuote';
 import { lastValueFrom, Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
@@ -53,7 +54,7 @@ export class AssetsService {
     const headers = new HttpHeaders({
       'X-CoinAPI-Key': 'D1913757-E994-4F13-A28B-4589FEF2DBD2',
     });
-    let res = this.http.get<Asset[]>(
+    let res = this.http.get<ExchangeQuote>(
       this.baseURL + '/v1/exchangerate/' + base + '/' + quote,
       { headers }
     );
