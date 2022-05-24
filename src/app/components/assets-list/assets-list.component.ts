@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Asset } from 'models/Asset';
+import { AssetsService } from 'src/app/services/assets.service';
 
 @Component({
   selector: 'app-assets-list',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssetsListComponent implements OnInit {
 
-  constructor() { }
+  assets: Asset[] = [];
 
-  ngOnInit(): void {
+  constructor(private assetsService: AssetsService) { }
+
+  async ngOnInit(): Promise<void> {
+    this.assets = await this.assetsService.getAssets();
   }
+
 
 }
