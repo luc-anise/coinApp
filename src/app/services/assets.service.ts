@@ -8,7 +8,6 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AssetsService {
-
   readonly baseURL = 'https://rest.coinapi.io';
   detailedAsset: Asset | null = null;
 

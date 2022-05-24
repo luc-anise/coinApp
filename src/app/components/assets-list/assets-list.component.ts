@@ -16,7 +16,11 @@ export class AssetsListComponent implements OnInit {
   loading = false;
   constructor(private assetsService: AssetsService) {}
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
+    this.setup();
+  }
+
+  private async setup() {
     this.loading = true;
     this.assets = await this.assetsService.getAssets();
     this.filteredAssets = this.assets;

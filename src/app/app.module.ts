@@ -7,11 +7,13 @@ import { AssetsListComponent } from './components/assets-list/assets-list.compon
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AssetDetailsComponent } from './components/asset-details/asset-details.component';
+import { ExchangeRateComponent } from './components/exchange-rate/exchange-rate.component';
 @NgModule({
   declarations: [
     AppComponent,
     AssetsListComponent,
-    AssetDetailsComponent
+    AssetDetailsComponent,
+    ExchangeRateComponent
   ],
   imports: [
     BrowserModule,

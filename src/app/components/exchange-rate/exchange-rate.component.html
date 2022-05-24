@@ -1,0 +1,40 @@
+<article class="bg-white rounded-md shadow-md mx-2 mt-4">
+  <header class="p-4 border-b">
+    <h2 class="text-lg font-semibold text-gray-700">Exchange Rate</h2>
+  </header>
+  <div class="p-4 flex items-center left">
+    <div class="relative z-0 group">
+      <input
+        type="text"
+        name="search"
+        class="block px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+        placeholder=" "
+      />
+      <label
+        for="search"
+        class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+        >Base (ID)</label
+      >
+    </div>
+    <p class="mx-2 align-bottom">to</p>
+    <div class="relative z-0 group">
+        <input
+          type="text"
+          name="search"
+          class="block px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+          placeholder=" "
+        />
+        <label
+          for="search"
+          class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+          >Quote (ID)</label
+        >
+      </div>
+      <button
+        type="button"
+        class="border border-green-500 bg-green-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-green-600 focus:outline-none focus:shadow-outline"
+      >
+        Get Quote
+      </button>
+  </div>
+</article>

@@ -2,5 +2,12 @@
   <header class="p-4 border-b">
     <h2 class="text-lg font-semibold text-gray-700">Assets Details</h2>
   </header>
-  <p *ngIf="assetsService.detailedAsset"> {{assetsService.detailedAsset | json}} </p>
+  <div class="p-4">
+    <p *ngIf="assetsService.detailedAsset">
+      {{ assetsService.detailedAsset | json }}
+    </p>
+    <p *ngIf="!assetsService.detailedAsset">
+      Click an asset in the list on the left to view it's details!
+    </p>
+  </div>
 </article>

@@ -33,7 +33,7 @@
       </button>
     </div>
   </header>
-  <div *ngIf="assets.length === 0">
+  <div *ngIf="loading">
     <p class="p-4 text-center text-gray-600">Loading...</p>
   </div>
   <div *ngIf="assets.length !== 0 && filteredAssets.length === 0">
