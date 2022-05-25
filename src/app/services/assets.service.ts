@@ -9,15 +9,15 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AssetsService {
-  readonly baseURL = 'https://rest.coinapi.io';
+  readonly baseURL = 'https://rest-sandbox.coinapi.io'; //'https://rest.coinapi.io';
   detailedAsset: Asset | null = null;
-
+  readonly apiKey = 'D1913757-E994-4F13-A28B-4589FEF2DBD2';
   constructor(private http: HttpClient) {}
   // get assets from API via GET request
   async getAssets() {
     // Auth tokens should be stored as ENV variables
     const headers = new HttpHeaders({
-      'X-CoinAPI-Key': 'D1913757-E994-4F13-A28B-4589FEF2DBD2',
+      'X-CoinAPI-Key': this.apiKey,
     });
     let res = this.http.get<Asset[]>(this.baseURL + '/v1/assets', { headers });
     return await lastValueFrom(res);
@@ -27,9 +27,9 @@ export class AssetsService {
   async getAsset(id: string) {
     // Auth tokens should be stored as ENV variables
     const headers = new HttpHeaders({
-      'X-CoinAPI-Key': 'D1913757-E994-4F13-A28B-4589FEF2DBD2',
+      'X-CoinAPI-Key': this.apiKey,
     });
-    let res = this.http.get<Asset>(this.baseURL + '/v1/assets/' + id, {
+    let res = this.http.get<Asset[]>(this.baseURL + '/v1/assets/' + id, {
       headers,
     });
     return await lastValueFrom(res);
@@ -39,7 +39,7 @@ export class AssetsService {
   async getFilteredAssets(filter: string) {
     // Auth tokens should be stored as ENV variables
     const headers = new HttpHeaders({
-      'X-CoinAPI-Key': 'D1913757-E994-4F13-A28B-4589FEF2DBD2',
+      'X-CoinAPI-Key': this.apiKey,
     });
     let res = this.http.get<Asset[]>(
       this.baseURL + '/v1/assets?filter_asset_id=' + filter,
@@ -52,7 +52,7 @@ export class AssetsService {
   async getExchangeRates(base: string, quote: string) {
     // Auth tokens should be stored as ENV variables
     const headers = new HttpHeaders({
-      'X-CoinAPI-Key': 'D1913757-E994-4F13-A28B-4589FEF2DBD2',
+      'X-CoinAPI-Key': this.apiKey,
     });
     let res = this.http.get<ExchangeQuote>(
       this.baseURL + '/v1/exchangerate/' + base + '/' + quote,
@@ -62,6 +62,6 @@ export class AssetsService {
   }
 
   async setDetailedAsset(asset: Asset) {
-    this.detailedAsset = await this.getAsset(asset.asset_id);
+    this.detailedAsset = (await this.getAsset(asset.asset_id))[0];
   }
 }
