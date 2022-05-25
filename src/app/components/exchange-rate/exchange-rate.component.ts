@@ -20,12 +20,17 @@ export class ExchangeRateComponent implements OnInit {
   ngOnInit(): void {}
 
   async getQuote() {
-    this.loading = true;
-    let quote = await this.assetsService.getExchangeRates(
-      this.exchangeForm.value.base,
-      this.exchangeForm.value.quote
-    );
-    this.rate = quote.rate;
-    this.loading = false;
+    try {
+      this.loading = true;
+      let quote = await this.assetsService.getExchangeRates(
+        this.exchangeForm.value.base,
+        this.exchangeForm.value.quote
+      );
+      this.rate = quote.rate;
+      this.loading = false;
+    } catch (error) {
+      console.error(error);
+      this.loading = false;
+    }
   }
 }

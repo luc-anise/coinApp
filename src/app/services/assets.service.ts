@@ -11,7 +11,7 @@ import { catchError, retry } from 'rxjs/operators';
 export class AssetsService {
   readonly baseURL = 'https://rest-sandbox.coinapi.io'; //'https://rest.coinapi.io';
   detailedAsset: Asset | null = null;
-  readonly apiKey = 'D1913757-E994-4F13-A28B-4589FEF2DBD2';
+  readonly apiKey = false ? '035C81AB-3F13-4B36-9720-132E264745BC' : 'D1913757-E994-4F13-A28B-4589FEF2DBD2';
   constructor(private http: HttpClient) {}
   // get assets from API via GET request
   async getAssets() {

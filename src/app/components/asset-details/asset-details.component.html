@@ -2,16 +2,16 @@
   <header class="p-4 border-b">
     <h2 class="text-lg font-semibold text-gray-700">Assets Details</h2>
   </header>
-  <div class="p-4">
+  <div class="px-4 pb-4 pt-2">
     <p *ngIf="assetsService.detailedAsset">
-      {{ assetsService.detailedAsset | json }}<br />
+      <!-- {{ assetsService.detailedAsset | json }}<br /> -->
       Name: {{ assetsService.detailedAsset.name }} <br />
       Ticker ID: {{ assetsService.detailedAsset.asset_id }}<br />
       Is Cyrpto:
       {{ assetsService.detailedAsset.type_is_crypto === 1 ? "Yes" : "No"
       }}<br />
       24 Hour Volume: {{ assetsService.detailedAsset.volume_1day_usd | number }}<br />
-      Price (USD): {{ assetsService.detailedAsset.price_usd | number }}<br />
+      Price (USD): {{ assetsService.detailedAsset.price_usd ? assetsService.detailedAsset.price_usd : 'Not Available'}}<br />
     </p>
     <p *ngIf="!assetsService.detailedAsset">
       Click an asset in the list on the left to view it's details!
